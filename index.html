@@ -2,164 +2,429 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cybersecurity Portfolio | [Your Name]</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cybersecurity Portfolio | Your Name</title>
+  <meta name="description" content="Cybersecurity analyst portfolio showcasing hands-on labs, security projects, skills, and contact information." />
+  <meta property="og:title" content="Cybersecurity Portfolio | Your Name" />
+  <meta property="og:description" content="Hands-on labs with Wireshark, Nessus, Burp Suite, Metasploit, and more." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
-      scroll-behavior: smooth;
+    :root{
+      --bg: #0b1220;
+      --card:#0f172a;
+      --muted:#94a3b8;
+      --text:#e2e8f0;
+      --brand:#22d3ee; /* cyan-400 */
+      --brand-2:#a78bfa; /* violet-400 */
+      --ring: 0 0 0 2px var(--brand);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
     }
-    header {
-      background-color: #2c3e50;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      position: relative;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(34,211,238,.18), transparent 60%),
+                  radial-gradient(900px 500px at -10% 10%, rgba(167,139,250,.12), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      scroll-behavior:smooth;
     }
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #34495e;
-      padding: 10px;
-      z-index: 1000;
-      text-align: center;
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* ====== Top Nav ====== */
+    .nav{
+      position:sticky; top:0; z-index:1000; backdrop-filter: saturate(180%) blur(10px);
+      background: linear-gradient(180deg, rgba(2,6,23,.85), rgba(2,6,23,.6));
+      border-bottom:1px solid rgba(148,163,184,.15);
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 60px 40px 40px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h1, h2, h3 {
-      color: #2c3e50;
-    }
-    .project {
-      margin-bottom: 40px;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .project h3 {
-      margin-top: 0;
-    }
-    .project img {
-      width: 100%;
-      border-radius: 6px;
-      margin-top: 10px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #ecf0f1;
-    }
-    a {
-      color: #2980b9;
-      text-decoration: none;
+    .nav-inner{max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 20px}
+    .brand{display:flex; gap:10px; align-items:center; font-weight:800; letter-spacing:.3px}
+    .brand .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 6px 18px rgba(34,211,238,.4)}
+    .menu{display:flex; gap:18px}
+    .menu a{color:var(--text); font-weight:600; opacity:.9}
+    .menu a:hover{opacity:1}
+    .menu-toggle{display:none}
+
+    /* ====== Hero ====== */
+    .hero{max-width:1100px; margin:0 auto; padding:90px 20px 40px; display:grid; grid-template-columns: 1.1fr .9fr; gap:40px; align-items:center}
+    .kicker{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border:1px solid rgba(148,163,184,.25); border-radius:999px; color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.12em}
+    .title{font-size:clamp(32px, 4.4vw, 54px); line-height:1.1; margin:14px 0}
+    .subtitle{color:var(--muted); font-size:18px; max-width:58ch}
+    .cta{margin-top:24px; display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid rgba(148,163,184,.2); background:#0b1220}
+    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#06111a; border:none}
+    .btn:hover{box-shadow:var(--shadow)}
+    .hero-card{background:linear-gradient(180deg, rgba(148,163,184,.06), rgba(148,163,184,.03)); border:1px solid rgba(148,163,184,.15); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+    .hero-card img{width:100%; border-radius:12px; display:block}
+    .pill{display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; color:#0b1220; background:rgba(34,211,238,.9); font-weight:800}
+
+    /* ====== Section shell ====== */
+    section{max-width:1100px; margin:0 auto; padding:60px 20px}
+    h2{font-size:26px; letter-spacing:.2px}
+    .muted{color:var(--muted)}
+
+    /* ====== Skills ====== */
+    .skills-grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:16px; margin-top:18px}
+    .card{background:linear-gradient(180deg, rgba(148,163,184,.06), rgba(148,163,184,.03)); border:1px solid rgba(148,163,184,.15); border-radius:var(--radius); padding:18px}
+    .badge-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .badge{padding:6px 10px; border-radius:999px; font-size:13px; border:1px solid rgba(148,163,184,.25); color:var(--text); background:rgba(2,6,23,.6)}
+
+    /* ====== Projects ====== */
+    .projects{display:grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-top:22px}
+    .project{border-radius:var(--radius); background:linear-gradient(180deg, rgba(148,163,184,.06), rgba(148,163,184,.03)); border:1px solid rgba(148,163,184,.15); overflow:hidden; display:flex; flex-direction:column}
+    .project .thumb{aspect-ratio:16/9; background:linear-gradient(135deg, rgba(34,211,238,.25), rgba(167,139,250,.2)); display:flex; align-items:center; justify-content:center; color:#06111a; font-weight:800}
+    .project .body{padding:16px}
+    .project h3{margin:0 0 8px 0}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0}
+    .tag{font-size:12px; padding:4px 10px; border-radius:999px; background:rgba(148,163,184,.12); color:var(--text); border:1px solid rgba(148,163,184,.2)}
+    .project .meta{color:var(--muted); font-size:14px}
+    .project .actions{display:flex; gap:10px; margin-top:12px}
+
+    /* ====== Timeline ====== */
+    .timeline{margin-top:10px}
+    .t-item{display:grid; grid-template-columns: 120px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed rgba(148,163,184,.18)}
+    .t-item:last-child{border-bottom:none}
+    .t-when{color:var(--muted); font-weight:700}
+
+    /* ====== Contact/Footer ====== */
+    .contact-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px}
+    .form{display:grid; gap:10px}
+    .input, textarea{background:#0b1220; color:var(--text); border:1px solid rgba(148,163,184,.25); border-radius:10px; padding:12px}
+    .footer{border-top:1px solid rgba(148,163,184,.15); padding:28px 20px; color:var(--muted); text-align:center}
+
+    /* ====== Utilities ====== */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+    .grid-2{display:grid; grid-template-columns: repeat(2,1fr); gap:12px}
+
+    /* ====== Responsive ====== */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr; padding-top:84px}
+      .contact-grid{grid-template-columns:1fr}
+      .menu{display:none}
+      .menu-toggle{display:inline-flex}
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <!-- ====== Navigation ====== -->
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="brand" href="#home" aria-label="Home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>CyberSec • Portfolio</span>
+      </a>
+      <button class="menu-toggle btn" aria-expanded="false" aria-controls="navmenu">Menu</button>
+      <div id="navmenu" class="menu" role="navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </nav>
 
-  <header>
-    <h1>[Your Name]</h1>
-    <p>Aspiring Cybersecurity Analyst | Hands-On Labs | Ethical Hacking | Network Defense</p>
+  <!-- ====== Hero ====== -->
+  <header id="home" class="hero">
+    <div>
+      <span class="kicker"><span aria-hidden="true">🛡️</span> Aspiring Cybersecurity Analyst</span>
+      <h1 class="title">Your Name</h1>
+      <p class="subtitle">Computer Science graduate with a cybersecurity focus. I build, break, and secure systems through hands‑on labs and projects with <strong>Wireshark</strong>, <strong>Nessus</strong>, <strong>Burp Suite</strong>, <strong>Metasploit</strong>, and more.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="#contact">Get in Touch</a>
+        <a class="btn" href="#resume" aria-describedby="resume-note">Download Résumé</a>
+      </div>
+      <p id="resume-note" class="sr-only">The résumé link opens a downloadable PDF.</p>
+    </div>
+    <div class="hero-card" aria-label="Highlight">
+      <div class="badge-row">
+        <span class="pill" title="TryHackMe / CTF practice">Hands‑On Labs</span>
+      </div>
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1600&auto=format&fit=crop" alt="Abstract cybersecurity visualization" />
+      <p class="muted" style="margin-top:10px">Focused on threat detection, vulnerability management, and secure coding fundamentals.</p>
+    </div>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m a Computer Science graduate with a focus on cybersecurity. This portfolio showcases hands-on labs and security projects I've completed using tools like Wireshark, Nessus, Burp Suite, and Metasploit.</p>
-    <img src="https://via.placeholder.com/800x300.png?text=Cybersecurity+Lab" alt="Cybersecurity Lab">
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="project">
-      <h3>Vulnerability Scanning with Nessus</h3>
-      <p><strong>Tools Used:</strong> Nessus, Kali Linux</p>
-      <p><strong>Objective:</strong> Identify and assess vulnerabilities in a simulated network.</p>
-      <p><strong>Skills:</strong> Vulnerability scanning, CVSS scoring, risk assessment</p>
-      <p><strong>What I Learned:</strong> How to use Nessus to scan systems, interpret reports, and prioritize security risks.</p>
-      <img src="https://via.placeholder.com/800x400.png?text=Nessus+Scan+Report" alt="Nessus Screenshot">
-    </div>
-
-    <div class="project">
-      <h3>Packet Analysis with Wireshark</h3>
-      <p><strong>Tools Used:</strong> Wireshark</p>
-      <p><strong>Objective:</strong> Analyze live network traffic and detect anomalies.</p>
-      <p><strong>Skills:</strong> Packet capture, protocol filtering, network forensics</p>
-      <p><strong>What I Learned:</strong> Monitoring and dissecting packets to support incident response and threat analysis.</p>
-      <img src="https://via.placeholder.com/800x400.png?text=Wireshark+Traffic+Capture" alt="Wireshark Screenshot">
-    </div>
-
-    <div class="project">
-      <h3>Web App Exploitation: SQL Injection & XSS</h3>
-      <p><strong>Tools Used:</strong> Manual injection, browser tools</p>
-      <p><strong>Objective:</strong> Identify and exploit web application vulnerabilities.</p>
-      <p><strong>Skills:</strong> Web security, input validation testing</p>
-      <p><strong>What I Learned:</strong> How injection flaws compromise data and application security.</p>
-    </div>
-
-    <div class="project">
-      <h3>Reconnaissance with Recon-ng & theHarvester</h3>
-      <p><strong>Tools Used:</strong> theHarvester, Recon-ng, WHOIS</p>
-      <p><strong>Objective:</strong> Perform OSINT to map a target's digital footprint.</p>
-      <p><strong>Skills:</strong> Passive recon, email/host discovery, DNS enumeration</p>
-      <p><strong>What I Learned:</strong> Gathering intel for red teaming and proactive threat assessment.</p>
-    </div>
-
-    <div class="project">
-      <h3>Session Hijacking with Burp Suite</h3>
-      <p><strong>Tools Used:</strong> Burp Suite</p>
-      <p><strong>Objective:</strong> Intercept and manipulate web session cookies.</p>
-      <p><strong>Skills:</strong> Proxy manipulation, session analysis, web security testing</p>
-      <p><strong>What I Learned:</strong> How poor session handling enables account takeover attacks.</p>
-    </div>
-
-    <div class="project">
-      <h3>Password Cracking with John the Ripper</h3>
-      <p><strong>Tools Used:</strong> John the Ripper</p>
-      <p><strong>Objective:</strong> Crack password hashes using dictionary and brute-force attacks.</p>
-      <p><strong>Skills:</strong> Hash cracking, password policy analysis</p>
-      <p><strong>What I Learned:</strong> The importance of strong passwords and how attackers exploit weak ones.</p>
-    </div>
-
-    <div class="project">
-      <h3>Social Engineering Simulation with SET</h3>
-      <p><strong>Tools Used:</strong> Social-Engineer Toolkit</p>
-      <p><strong>Objective:</strong> Simulate phishing attacks in a lab environment.</p>
-      <p><strong>Skills:</strong> Attack simulation, awareness training, ethical hacking</p>
-      <p><strong>What I Learned:</strong> How social engineering works and how to defend against it.</p>
+  <!-- ====== About ====== -->
+  <section id="about" aria-labelledby="about-title">
+    <h2 id="about-title">About Me</h2>
+    <p class="muted">I’m a motivated analyst who learns fast and documents thoroughly. I enjoy packet sleuthing, turning noisy logs into clear stories, and collaborating with teams to ship secure features.</p>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-when">2025</div>
+        <div><strong>CS B.S. + Cybersecurity minor</strong> — capstone focused on secure systems and network defense.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-when">Ongoing</div>
+        <div><strong>Platforms</strong>: TryHackMe, Hack The Box (beginner labs), OWASP Juice Shop, Metasploitable.</div>
+      </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>You can reach me at: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-    <p>Connect on <a href="https://github.com/yourgithub">GitHub</a> and <a href="https://linkedin.com/in/yourlinkedin">LinkedIn</a></p>
+  <!-- ====== Skills ====== -->
+  <section id="skills" aria-labelledby="skills-title">
+    <h2 id="skills-title">Skills</h2>
+    <p class="muted">Blend of security tooling, programming, and professional strengths.</p>
+    <div class="skills-grid">
+      <div class="card" aria-label="Security Tools">
+        <h3>Security & DFIR Tools</h3>
+        <div class="badge-row">
+          <span class="badge">Wireshark</span>
+          <span class="badge">Nessus</span>
+          <span class="badge">Burp Suite</span>
+          <span class="badge">Metasploit</span>
+          <span class="badge">theHarvester</span>
+          <span class="badge">Recon‑ng</span>
+          <span class="badge">Nmap</span>
+          <span class="badge">Volatility</span>
+          <span class="badge">OSINT</span>
+        </div>
+      </div>
+      <div class="card" aria-label="Programming Languages">
+        <h3>Programming & Scripting</h3>
+        <div class="badge-row">
+          <span class="badge">Python</span>
+          <span class="badge">Bash</span>
+          <span class="badge">PowerShell</span>
+          <span class="badge">SQL</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">C</span>
+          <span class="badge">Java</span>
+          <span class="badge">Go</span>
+          <span class="badge">YAML/JSON</span>
+        </div>
+      </div>
+      <div class="card" aria-label="Security Domains">
+        <h3>Security Domains</h3>
+        <div class="badge-row">
+          <span class="badge">Network Security</span>
+          <span class="badge">Vulnerability Mgmt</span>
+          <span class="badge">Web App Security</span>
+          <span class="badge">Threat Modeling</span>
+          <span class="badge">SIEM Basics</span>
+          <span class="badge">Incident Response</span>
+          <span class="badge">Secure SDLC</span>
+        </div>
+      </div>
+      <div class="card" aria-label="Soft Skills">
+        <h3>Professional & Soft Skills</h3>
+        <div class="badge-row">
+          <span class="badge">Analytical Writing</span>
+          <span class="badge">Documentation</span>
+          <span class="badge">Stakeholder Communication</span>
+          <span class="badge">Team Collaboration</span>
+          <span class="badge">Time Management</span>
+          <span class="badge">Problem Solving</span>
+          <span class="badge">Adaptability</span>
+          <span class="badge">Presentation</span>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>© 2025 [Your Name]. All rights reserved.</p>
+  <!-- ====== Projects ====== -->
+  <section id="projects" aria-labelledby="projects-title">
+    <h2 id="projects-title">Projects</h2>
+    <div class="projects">
+      <!-- Nessus -->
+      <article class="project" aria-labelledby="p1-title">
+        <div class="thumb" role="img" aria-label="Nessus scan report preview">Nessus • Scan Report</div>
+        <div class="body">
+          <h3 id="p1-title">Vulnerability Scanning with Nessus</h3>
+          <p class="meta">Tools: Nessus, Kali</p>
+          <p>Identified and prioritized CVEs on a lab subnet. Triaged findings with CVSS, mapped to remediation steps, and produced an executive summary.</p>
+          <div class="tags">
+            <span class="tag">Vuln Mgmt</span>
+            <span class="tag">CVSS</span>
+            <span class="tag">Reporting</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#" aria-label="View write‑up for Nessus project">Case Study</a>
+            <a class="btn" href="#" aria-label="View source code or scripts">GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Wireshark -->
+      <article class="project" aria-labelledby="p2-title">
+        <div class="thumb" role="img" aria-label="Wireshark packet analysis">Wireshark • PCAP</div>
+        <div class="body">
+          <h3 id="p2-title">Packet Analysis for Anomaly Detection</h3>
+          <p class="meta">Tools: Wireshark</p>
+          <p>Captured and filtered HTTP/SMTP traffic to uncover credentials in transit and IOC patterns. Produced a timeline to support incident response.</p>
+          <div class="tags">
+            <span class="tag">Network Forensics</span>
+            <span class="tag">IR</span>
+            <span class="tag">PCAP</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#">Case Study</a>
+            <a class="btn" href="#">GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Web App -->
+      <article class="project" aria-labelledby="p3-title">
+        <div class="thumb" role="img" aria-label="Web app exploitation lab">Web App • OWASP</div>
+        <div class="body">
+          <h3 id="p3-title">Web App Exploitation: SQLi & XSS</h3>
+          <p class="meta">Tools: Browser devtools</p>
+          <p>Discovered and validated injection flaws in a sandboxed app, demonstrating impact and proposing parameterized queries and output encoding.</p>
+          <div class="tags">
+            <span class="tag">OWASP</span>
+            <span class="tag">SQLi</span>
+            <span class="tag">XSS</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#">Case Study</a>
+            <a class="btn" href="#">GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Recon -->
+      <article class="project" aria-labelledby="p4-title">
+        <div class="thumb" role="img" aria-label="OSINT recon visualization">OSINT • Recon</div>
+        <div class="body">
+          <h3 id="p4-title">Reconnaissance with Recon‑ng & theHarvester</h3>
+          <p class="meta">Tools: theHarvester, Recon‑ng, WHOIS</p>
+          <p>Mapped public attack surface including emails, hosts, and DNS records; presented findings and hardening recommendations.</p>
+          <div class="tags">
+            <span class="tag">OSINT</span>
+            <span class="tag">DNS</span>
+            <span class="tag">Footprinting</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#">Case Study</a>
+            <a class="btn" href="#">GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- Burp -->
+      <article class="project" aria-labelledby="p5-title">
+        <div class="thumb" role="img" aria-label="Burp Suite session analysis">Burp • Sessions</div>
+        <div class="body">
+          <h3 id="p5-title">Session Hijacking with Burp Suite</h3>
+          <p class="meta">Tools: Burp Suite</p>
+          <p>Intercepted and manipulated session cookies to demonstrate insecure session handling and recommended secure attributes and rotation.</p>
+          <div class="tags">
+            <span class="tag">Web Security</span>
+            <span class="tag">Sessions</span>
+            <span class="tag">Cookies</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#">Case Study</a>
+            <a class="btn" href="#">GitHub</a>
+          </div>
+        </div>
+      </article>
+      <!-- John -->
+      <article class="project" aria-labelledby="p6-title">
+        <div class="thumb" role="img" aria-label="Password cracking with John the Ripper">John • Cracking</div>
+        <div class="body">
+          <h3 id="p6-title">Password Cracking with John the Ripper</h3>
+          <p class="meta">Tools: John the Ripper</p>
+          <p>Cracked weak hashes using wordlists and rules. Summarized lessons for strong policy design and MFA advocacy.</p>
+          <div class="tags">
+            <span class="tag">Passwords</span>
+            <span class="tag">Rules</span>
+            <span class="tag">Policy</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#">Case Study</a>
+            <a class="btn" href="#">GitHub</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ====== Experience / Highlights ====== -->
+  <section id="experience" aria-labelledby="exp-title">
+    <h2 id="exp-title">Experience & Highlights</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>What I Bring</h3>
+        <ul>
+          <li>Clear, actionable reports for both technical and non‑technical audiences.</li>
+          <li>Reproducible lab write‑ups and tidy scripts to automate checks.</li>
+          <li>Collaboration with developers to fix issues early in the SDLC.</li>
+        </ul>
+      </div>
+      <div class="card" id="resume">
+        <h3>Résumé</h3>
+        <p class="muted">Provide a PDF at <code>/assets/YourName_Resume.pdf</code> and link it here.</p>
+        <p><a class="btn" href="/assets/YourName_Resume.pdf" download>Download PDF</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Contact ====== -->
+  <section id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact</h2>
+    <div class="contact-grid">
+      <form class="card form" action="mailto:youremail@example.com" method="post" enctype="text/plain">
+        <div class="grid-2">
+          <label>
+            <span class="sr-only">Name</span>
+            <input required class="input" name="name" placeholder="Your name" />
+          </label>
+          <label>
+            <span class="sr-only">Email</span>
+            <input required type="email" class="input" name="email" placeholder="Email" />
+          </label>
+        </div>
+        <label>
+          <span class="sr-only">Message</span>
+          <textarea required rows="5" class="input" name="message" placeholder="How can I help?"></textarea>
+        </label>
+        <button class="btn primary" type="submit">Send Message</button>
+        <p class="muted">Or reach me directly: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p class="muted">GitHub: <a href="https://github.com/yourgithub">@yourgithub</a> • LinkedIn: <a href="https://linkedin.com/in/yourlinkedin">/in/yourlinkedin</a></p>
+      </form>
+      <div class="card">
+        <h3>Availability</h3>
+        <p>Open to entry‑level cybersecurity analyst roles, SOC analyst, vulnerability management, or AppSec internships.</p>
+        <h3 style="margin-top:16px">Interests</h3>
+        <div class="badge-row">
+          <span class="badge">Blue Team</span>
+          <span class="badge">Threat Hunting</span>
+          <span class="badge">Secure Coding</span>
+          <span class="badge">Automation</span>
+          <span class="badge">CTFs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Your Name. Built with semantic HTML, accessible components, and a dash of neon.</p>
   </footer>
+
+  <script>
+    // Basic mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('navmenu');
+    toggle?.addEventListener('click', () => {
+      const open = menu.style.display === 'flex';
+      menu.style.display = open ? 'none' : 'flex';
+      toggle.setAttribute('aria-expanded', String(!open));
+    });
+  </script>
+
+  <!--
+    ====== QUICK PERSONALIZATION TODOs ======
+    1) Replace "Your Name" with your name (and page <title>/OG tags accordingly).
+    2) Update email, GitHub, and LinkedIn links in the Contact section.
+    3) Add your résumé PDF at /assets/YourName_Resume.pdf or change the link.
+    4) For each project, swap the Case Study/GitHub # links to real pages.
+    5) If you prefer lighter theme, set --bg and --card to lighter colors.
+  -->
 </body>
 </html>
